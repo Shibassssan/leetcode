@@ -5,8 +5,16 @@
  */
 
 // @lc code=start
-function removeDuplicates(nums: number[]): number {
-  return 1;
+const removeDuplicates = (nums: number[]): number => {
+  if (nums.length === 0) return 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i + 1] === nums[i]) {
+      nums.splice(i, 1);
+      i--;
+    }
+  }
+
+  return nums.length;
 };
 // @lc code=end
-
