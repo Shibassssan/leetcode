@@ -8,7 +8,7 @@
 const lengthOfLastWord = (s: string): number => {
   const strings = s.split(' ').filter(n => n);
   const lastWorld = strings.pop();
-  return lastWorld.length;
+  return lastWorld ? lastWorld.length : 0;
 };
 // @lc code=end
 
