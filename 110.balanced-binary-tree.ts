@@ -24,7 +24,7 @@ const calcBalanced = (root: TreeNode | null): number => {
   return 1 + Math.max(calcBalanced(root.left), calcBalanced(root.right));
 }
 const isBalanced = (root: TreeNode | null): boolean =>  {
-  if (root === null) return false;
+  if (root === null) return true;
   const left = calcBalanced(root.left);
   const right = calcBalanced(root.right);
   return Math.abs(left - right) <= 1 && isBalanced(root.right) && isBalanced(root.left);
