@@ -6,25 +6,19 @@
 
 // @lc code=start
 class NumArray {
-	sums: number[];
-	constructor(nums: number[]) {
-		this.sums = [];
-		this.init(nums);
-	}
+  nums: number[];
+  constructor(nums: number[]) {
+    this.nums = nums;
+  }
 
-	init(nums: number[]) {
-		let sum = 0;
-		for (let k = 0; k < nums.length; k++) {
-			sum += k;
-			this.sums.push(sum)
-		}
-	}
-
-	sumRange(left: number, right: number): number {
-		return this.sums[right] - (left > 0 ? this.sums[left -1]: 0);
-	}
+  sumRange(left: number, right: number): number {
+    let sum = 0;
+    for (let k = left; k <= right; k++) {
+      sum += this.nums[k];
+    }
+    return sum;
+  }
 }
-
 /**
  * Your NumArray object will be instantiated and called as such:
  * var obj = new NumArray(nums)
