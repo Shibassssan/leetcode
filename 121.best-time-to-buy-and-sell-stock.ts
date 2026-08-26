@@ -5,20 +5,35 @@
  */
 
 // @lc code=start
-const maxProfit =(prices: number[]): number => {
-  let minValue = prices[0];
-  let maxProf = 0;
-  prices.map((price, index) => {
-    if (price < minValue) {
-      minValue = price;
-    }
+// const maxProfit =(prices: number[]): number => {
+//   let minValue = prices[0];
+//   let maxProf = 0;
+//   prices.map((price, index) => {
+//     if (price < minValue) {
+//       minValue = price;
+//     }
+//
+//     if (price - minValue > maxProf) {
+//       maxProf = price - minValue;
+//     }
+//   })
+//
+//   return maxProf;
+// };
 
-    if (price - minValue > maxProf) {
-      maxProf = price - minValue;
-    }
-  })
+const maxProfit = (prices: number[]): number => {
+  let minPrice = prices[0];
+  let maxProfitSoFar = 0;
 
-  return maxProf;
+  for (const price of prices) {
+    if (price < minPrice) {
+      minPrice = price;
+    } else if (price - minPrice > maxProfitSoFar) {
+      maxProfitSoFar = price - minPrice;
+    }
+  }
+
+  return maxProfitSoFar;
 };
 // @lc code=end
 
