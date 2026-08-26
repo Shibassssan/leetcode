@@ -5,32 +5,55 @@
  */
 
 // @lc code=start
-const brackets: { [key: string]: string } = {
-  ']': '[',
-  '}': '{',
-  ')': '(',
-};
+// const brackets: { [key: string]: string } = {
+//   ']': '[',
+//   '}': '{',
+//   ')': '(',
+// };
+//
+// const isClosing = (s: string): boolean => {
+//   return brackets.hasOwnProperty(s);
+// };
+//
+// const isValid = (s: string): boolean => {
+//   const stack: string[] = [];
+//   const chars = s.split('');
+//
+//   for (const char of chars) {
+//     if (isClosing(char)) {
+//       const opening = stack.pop();
+//       if (brackets[char] !== opening) {
+//         return false;
+//       }
+//     } else {
+//       stack.push(char);
+//     }
+//   }
+//
+//   return stack.length === 0;
+// }
 
-const isClosing = (s: string): boolean => {
-  return brackets.hasOwnProperty(s);
+const pairs: Record<string, string> = {
+  ")": "(",
+  "]": "[",
+  "}": "{",
 };
 
 const isValid = (s: string): boolean => {
   const stack: string[] = [];
-  const chars = s.split('');
 
-  for (const char of chars) {
-    if (isClosing(char)) {
-      const opening = stack.pop();
-      if (brackets[char] !== opening) {
-        return false;
-      }
-    } else {
+  for (const char of s) {
+    const expected = pairs[char];
+    if (expected === undefined) {
       stack.push(char);
+      continue;
+    }
+    if (stack.pop() !== expected) {
+      return false;
     }
   }
 
   return stack.length === 0;
-}
+};
 // @lc code=end
 
